@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -5,26 +7,21 @@ import 'package:flutter/painting.dart';
 class ProfileUi extends StatefulWidget {
   Map member_details;
   ProfileUi({Key key, @required this.member_details}) : super();
-
   @override
   _ProfileUiState createState() => _ProfileUiState();
 }
 
 class _ProfileUiState extends State<ProfileUi> {
-  @override
   ConfettiController _controllerCenterRight;
   ConfettiController _controllerCenterLeft;
-  ConfettiController _controllerTopCenter;
-  ConfettiController _controllerBottonCenter;
+  ConfettiController _controllerBottomCenter;
 
   @override
   void initState() {
-    _controllerCenterRight =
-        ConfettiController(duration: Duration(seconds: 10));
-    _controllerCenterLeft = ConfettiController(duration: Duration(seconds: 10));
-    _controllerTopCenter = ConfettiController(duration: Duration(seconds: 10));
-    _controllerBottonCenter =
-        ConfettiController(duration: Duration(seconds: 10));
+    _controllerCenterRight = ConfettiController(duration: Duration(seconds: 2));
+    _controllerCenterLeft = ConfettiController(duration: Duration(seconds: 2));
+    _controllerBottomCenter =
+        ConfettiController(duration: Duration(seconds: 2));
     super.initState();
   }
 
@@ -32,11 +29,11 @@ class _ProfileUiState extends State<ProfileUi> {
   void dispose() {
     _controllerCenterRight.dispose();
     _controllerCenterLeft.dispose();
-    _controllerTopCenter.dispose();
-    _controllerBottonCenter.dispose();
+    _controllerBottomCenter.dispose();
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     final Color color1 = Colors.blueGrey[900];
     final Color color2 = Colors.blueGrey[200];
@@ -62,15 +59,24 @@ class _ProfileUiState extends State<ProfileUi> {
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
-                setState(() {
-                  Navigator.pop(context);
-                });
+                Navigator.pop(context);
               },
             ),
             actions: <Widget>[],
             title: new Text(
               'Profile',
               style: new TextStyle(fontSize: 18),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: ConfettiWidget(
+              confettiController: _controllerBottomCenter,
+              blastDirection: -pi / 2,
+              emissionFrequency: 0.05,
+              numberOfParticles: 10,
+              maxBlastForce: 50,
+              minBlastForce: 20,
             ),
           ),
           Container(
@@ -138,7 +144,7 @@ class _ProfileUiState extends State<ProfileUi> {
                 Expanded(
                   flex: 1,
                   child: Text(
-                    'College : ${widget.member_details['date']}',
+                    'Joining Date : ${widget.member_details['date']}',
                     style: TextStyle(
                       color: Colors.black54,
                     ),
@@ -148,8 +154,7 @@ class _ProfileUiState extends State<ProfileUi> {
                   flex: 1,
                   child: Container(),
                 ),
-                Expanded(
-                  flex: 8,
+                Container(
                   child: Stack(
                     children: <Widget>[
                       Container(
@@ -169,7 +174,9 @@ class _ProfileUiState extends State<ProfileUi> {
                               color: Colors.blueGrey[100],
                               icon: Icon(Icons.lightbulb_outline),
                               onPressed: () {
-                                open_dialog('advice');
+                                setState(() {
+                                  open_dialog('advice');
+                                });
                               },
                             ),
                             Spacer(),
@@ -185,22 +192,40 @@ class _ProfileUiState extends State<ProfileUi> {
                       ),
                       Center(
                         child: FloatingActionButton(
-                          child: Icon(
-                            Icons.lightbulb_outline,
-                            color: Colors.pink,
-                          ),
-                          backgroundColor: Colors.white,
+                          child: Image.asset('images/msplogo.jpg'),
+                          backgroundColor: Colors.transparent,
                           onPressed: () {
                             setState(() {
-                              _controllerTopCenter.play();
+                              _controllerBottomCenter.play();
+                              _controllerCenterRight.play();
+                              _controllerCenterLeft.play();
                             });
                           },
                         ),
                       ),
                     ],
                   ),
-                ),
+                )
               ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: ConfettiWidget(
+              confettiController: _controllerCenterRight,
+              blastDirection: pi, // radial value - LEFT
+              emissionFrequency: 0.05,
+              numberOfParticles: 10,
+              shouldLoop: false,
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: ConfettiWidget(
+              confettiController: _controllerCenterLeft,
+              blastDirection: 0, // radial value - RIGHT
+              emissionFrequency: 0.5,
+              numberOfParticles: 1,
             ),
           ),
         ],
