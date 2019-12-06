@@ -57,7 +57,7 @@ class _MembersListState extends State<MembersList> {
                         textDirection: TextDirection.rtl,
                         style: new TextStyle(
                           fontFamily: 'PTSerif',
-                          fontSize: 22.0,
+                          fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
