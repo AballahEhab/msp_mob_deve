@@ -104,9 +104,10 @@ class _msp_mob_devState extends State<msp_mob_dev>
     {
       'name': 'Aya Khaled',
       'position': 'mobile app developer',
-      'image': 'ayakhled',
-      'feedback': '',
-      'advice': '',
+      'image': 'aya khaled',
+      'feedback': 'الفريق في المجمل جيد و علي وجه الاخص لجنه الموبايل اب رائعة و تمتلك جو مرح و مشجع للعمل',
+      'advice': 'قرار المشاركه في عمل تطوعي في اعتقادي انه شئ اصبح لابد منه لانه يعمل علي تنميه الشعور بالمسؤوليه و المشاركه و ينعكس بشكل ايجابي من حيث ال soft skills (المهارات الحياتيه) Teamwoek والتدريب علي العمل الجماعي   الذي يحمل هدف سامي وهو Together Everyone Achieve More معا الجميع يحقق المزيد   بالاضافه ان تعلم شئ مرغوب من القلب والعقل يجعلها رحله مليئه بالشغف والحماس والتحدي ورغبتك لترك اثر جيد',
+
     },
     {
       'name': 'Aya Mohamed',
