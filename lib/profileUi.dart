@@ -135,7 +135,7 @@ class _ProfileUiState extends State<ProfileUi> {
                 Expanded(
                   flex: 1,
                   child: Text(
-                    'College : ${widget.member_details['collage']}',
+                    'College : ${widget.member_details['college']}',
                     style: TextStyle(
                       color: Colors.black54,
                     ),
@@ -242,7 +242,11 @@ class _ProfileUiState extends State<ProfileUi> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),
               backgroundColor: Colors.blueGrey[50],
-              title: Center(child: Text(title)),
+              title: Center(
+                child: Text(
+                  title,
+                ),
+              ),
               content: Text(widget.member_details[title]),
             );
           });

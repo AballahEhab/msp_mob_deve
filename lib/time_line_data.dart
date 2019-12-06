@@ -53,7 +53,7 @@ const List<Meeting> meetings = [
         "images/FirstMeeting/2.jpg"
       ],
       icon: Icon(
-        Icons.room,
+        Icons.map,
         color: Colors.white,
         size: 32.0,
       ),

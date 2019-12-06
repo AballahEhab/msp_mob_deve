@@ -47,30 +47,29 @@ class _MembersListState extends State<MembersList> {
                   ),
                 ),
               ),
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: new Column(
-                    children: <Widget>[
-                      Text(
-                        current_member['name'],
-                        textDirection: TextDirection.rtl,
-                        style: new TextStyle(
-                          fontFamily: 'PTSerif',
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      current_member['name'],
+                      textDirection: TextDirection.rtl,
+                      style: new TextStyle(
+                        fontFamily: 'PTSerif',
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Text(
-                        current_member['position'],
-                        textDirection: TextDirection.rtl,
-                        style: new TextStyle(
-                          fontSize: 10.0,
-                          fontWeight: FontWeight.normal,
-                        ),
+                    ),
+                    Text(
+                      current_member['position'],
+//                        textDirection: TextDirection.rtl,
+                      style: new TextStyle(
+                        fontSize: 10.0,
+                        fontWeight: FontWeight.normal,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],
